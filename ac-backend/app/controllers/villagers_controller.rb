@@ -1,0 +1,2 @@
+class VillagersController < ApplicationController
+end
