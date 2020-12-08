@@ -18,13 +18,6 @@ ActiveRecord::Schema.define(version: 2020_12_07_221304) do
     t.string "location"
     t.string "flavor_text"
     t.integer "value"
-    t.integer "critterpedia_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["critterpedia_id"], name: "index_bugs_on_critterpedia_id"
-  end
-
-  create_table "critterpedia", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -43,10 +36,8 @@ ActiveRecord::Schema.define(version: 2020_12_07_221304) do
     t.string "location"
     t.string "flavor_text"
     t.integer "value"
-    t.integer "critterpedia_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["critterpedia_id"], name: "index_fish_on_critterpedia_id"
   end
 
   create_table "sea_critters", force: :cascade do |t|
@@ -55,10 +46,8 @@ ActiveRecord::Schema.define(version: 2020_12_07_221304) do
     t.string "location"
     t.string "flavor_text"
     t.integer "value"
-    t.integer "critterpedia_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["critterpedia_id"], name: "index_sea_critters_on_critterpedia_id"
   end
 
   create_table "villagers", force: :cascade do |t|

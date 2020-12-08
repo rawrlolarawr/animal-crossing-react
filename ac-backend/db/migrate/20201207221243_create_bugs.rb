@@ -7,8 +7,6 @@ class CreateBugs < ActiveRecord::Migration[6.0]
       t.string :flavor_text
       t.integer :value
 
-      t.references :critterpedia
-
       t.timestamps
     end
   end
