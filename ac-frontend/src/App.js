@@ -1,10 +1,10 @@
 import './App.css';
-import Critter from './components/Critter'
+import CritterContainer from './containers/CritterContainer'
 
 function App() {
   return (
     <div className="App">
-      <Critter />
+      <CritterContainer />
     </div>
   );
 }
