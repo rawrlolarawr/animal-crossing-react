@@ -1,10 +1,10 @@
 import './App.css';
-import CritterContainer from './containers/CritterContainer'
+import FishContainer from './containers/FishContainer'
 
 function App() {
   return (
     <div className="App">
-      <CritterContainer />
+      <FishContainer />
     </div>
   );
 }

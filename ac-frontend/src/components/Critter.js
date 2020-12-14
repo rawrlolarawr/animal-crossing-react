@@ -1,10 +1,10 @@
-import React, {Component} from "react"
+import React from "react"
 
 const Critter = (props) => {
     
     return (
         <div>
-            <p>this is a critter</p>
+            <p>{props.critters.name}</p>
         </div>
     )
 }
