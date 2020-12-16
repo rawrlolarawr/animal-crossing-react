@@ -4,7 +4,7 @@ const Critter = (props) => {
     
     return (
         <div>
-            <p>{props.critters.name}</p>
+            <p>{props.critter.attributes.name}</p>
         </div>
     )
 }

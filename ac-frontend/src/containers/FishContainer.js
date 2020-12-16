@@ -11,9 +11,8 @@ export default class FishContainer extends Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:3001/fish').then(resp => resp.json()).then(fish => this.setState())
+        fetch('http://localhost:3001/fish').then(resp => resp.json()).then(json => this.setState({ fish: json.data }))
     }
-    
 
     render() {
         return (
