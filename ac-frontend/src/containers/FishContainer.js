@@ -1,24 +1,48 @@
 import React, {Component} from 'react'
+import { connect } from 'react-redux'
 import CritterList from '../components/CritterList'
+import { addFish } from '../actions/FishActions'
 
-export default class FishContainer extends Component {
-    constructor(props){
-        super(props)
+class FishContainer extends Component {
+    addFish = newFish => {
+        fetch('http://localhost:3001/fish', this.createConfigObj('POST', newFish))
+        this.props.dispatch(addFish(newFish))
+    }
 
-        this.state = {
-            fish: []
-        }
+    renderFish = fishObj => {
+        return fishObj.data.map(fish => this.props.dispatch(addFish(fish.attributes)))
     }
 
     componentDidMount() {
-        fetch('http://localhost:3001/fish').then(resp => resp.json()).then(json => this.setState({ fish: json.data }))
+        fetch('http://localhost:3001/fish')
+            .then(resp => resp.json())
+            .then(fish => {
+                console.log('FISH: ', fish)
+                return this.renderFish(fish)
+            })
+    }
+
+    createConfigObj = (method, body) => {
+        return {
+            method: method,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        }
     }
 
     render() {
         return (
             <div>
-                <CritterList critters={this.state.fish}/>
+                <CritterList source='Fish' critters={this.props.fish}/>
             </div>
         )
     }
 }
+
+const mapStateToProps = state => {
+    return { fish: state.fish }
+}
+
+export default connect(mapStateToProps)(FishContainer)
