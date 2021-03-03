@@ -1,12 +1,12 @@
 import Critter from './Critter'
-import { connect } from 'react-redux'
 
 const CritterList = props => {
     console.log('CRITTER LIST PROPS: ', props.fish)
+    const source = props.source.toLowerCase()
     return (
         <div className="critter-list">
             <h2>{props.source}</h2>
-            <p>{props.critter.fish.map(critterArg => <Critter critter={critterArg} />)}</p>
+            <div className='Critter'>{props.critter[source].map(critterArg => <Critter critter={critterArg} />)}</div>
         </div>
     )
 }
