@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import CritterList from '../components/CritterList'
 
@@ -12,7 +12,6 @@ const FishContainer = props => {
 }
 
 const mapStateToProps = state => {
-    console.log(state.fish)
     return { fish: state.fish }
 }
 
