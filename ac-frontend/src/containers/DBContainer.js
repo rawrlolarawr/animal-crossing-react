@@ -9,46 +9,48 @@ import { addBug } from '../actions/BugActions'
 import { addFish } from '../actions/FishActions'
 import { addSeaCritter } from '../actions/SeaCritterActions'
 import { addVillager } from '../actions/VillagerActions'
+import { fetchCritters } from '../actions/FetchCritters'
 
 const DBContainer = props => {
-    const fetchBugs = () => {
-        fetch('http://localhost:3001/bugs')
-                .then(resp => resp.json())
-                .then(bugObj => {
-                    return bugObj.data.map(bug => props.dispatch(addBug(bug.attributes)))
-                })
-    }
+    // const fetchBugs = () => {
+    //     fetch('http://localhost:3001/bugs')
+    //             .then(resp => resp.json())
+    //             .then(bugObj => {
+    //                 return bugObj.data.map(bug => props.dispatch(addBug(bug.attributes)))
+    //             })
+    // }
 
-    const fetchFish = () => {
-        fetch('http://localhost:3001/fish')
-                .then(resp => resp.json())
-                .then(fishObj => {
-                    return fishObj.data.map(fish => props.dispatch(addFish(fish.attributes)))
-                })
-    }
+    // const fetchFish = () => {
+    //     fetch('http://localhost:3001/fish')
+    //             .then(resp => resp.json())
+    //             .then(fishObj => {
+    //                 return fishObj.data.map(fish => props.dispatch(addFish(fish.attributes)))
+    //             })
+    // }
 
-    const fetchSeaCritters = () => {
-        fetch('http://localhost:3001/sea_critters')
-                .then(resp => resp.json())
-                .then(sCObj => {
-                    return sCObj.data.map(sC => props.dispatch(addSeaCritter(sC.attributes)))
-                })
-    }
+    // const fetchSeaCritters = () => {
+    //     fetch('http://localhost:3001/sea_critters')
+    //             .then(resp => resp.json())
+    //             .then(sCObj => {
+    //                 return sCObj.data.map(sC => props.dispatch(addSeaCritter(sC.attributes)))
+    //             })
+    // }
 
-    const fetchVillagers = () => {
-        fetch('http://localhost:3001/villagers')
-                .then(resp => resp.json())
-                .then(villagerObj => {
-                    console.log({villagerObj})
-                    return villagerObj.data.map(villager => props.dispatch(addVillager(villager.attributes)))
-                })
-    }
+    // const fetchVillagers = () => {
+    //     fetch('http://localhost:3001/villagers')
+    //             .then(resp => resp.json())
+    //             .then(villagerObj => {
+    //                 console.log({villagerObj})
+    //                 return villagerObj.data.map(villager => props.dispatch(addVillager(villager.attributes)))
+    //             })
+    // }
 
     useEffect(() => {
-        fetchBugs()
-        fetchFish()
-        fetchSeaCritters()
-        fetchVillagers()
+        // fetchBugs()
+        // fetchFish()
+        // fetchSeaCritters()
+        // fetchVillagers()
+        props.fetchCritters()
       }, [])
 
     return (
@@ -78,10 +80,14 @@ const DBContainer = props => {
     )
 }
 
+const mapDispatchToProps = dispatch => {
+    return { fetchCritters: () => dispatch(fetchCritters())}
+}
+
 const mapStateToProps = state => {
     return { fish: state.fish,
              bugs: state.bugs,
-             villagers: state.villagers }
+             villagers: state.villagers}
 }
 
-export default connect(mapStateToProps)(DBContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(DBContainer)
