@@ -1,2 +1,0 @@
-class CritterpediaController < ApplicationController
-end

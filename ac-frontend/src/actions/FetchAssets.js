@@ -1,9 +1,10 @@
-import { addBug } from '../actions/BugActions'
-import { addFish } from '../actions/FishActions'
-import { addSeaCritter } from '../actions/SeaCritterActions'
-import { addVillager } from '../actions/VillagerActions'
+import { addBug } from './BugActions'
+import { addFish } from './FishActions'
+import { addSeaCritter } from './SeaCritterActions'
+import { addVillager } from './VillagerActions'
+import { addDesign } from './DesignActions'
 
-export function fetchCritters(){
+export function fetchAssets(){
     return dispatch => {
         fetch('http://localhost:3001/bugs')
                 .then(resp => resp.json())
@@ -25,6 +26,11 @@ export function fetchCritters(){
                 .then(resp => resp.json())
                 .then(villagerObj => {
                     return villagerObj.data.map(villager => dispatch(addVillager(villager.attributes)))
+                })
+        fetch('http://localhost:3001/designs')
+                .then(resp => resp.json())
+                .then(designObj => {
+                    return designObj.data.map(design => dispatch(addDesign(design.attributes)))
                 })
     }
 }
