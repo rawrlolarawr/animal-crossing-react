@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 
 class DesignForm extends Component {
-    super(props){
+    constructor(props){
+        super(props)
         this.state = {
             name: '',
             image: '',
@@ -38,18 +39,22 @@ class DesignForm extends Component {
             body: JSON.stringify(design)
         }
         
-        fetch('http://localhost:3001/designs/new', configObj)
+        fetch('http://localhost:3001/designs', configObj)
     }
 
     handleChange = event => {
-        this.setState({design: event.target.value})
+        console.log({event})
+        const value = event.target.value
+        this.setState({ ...this.state, [event.target.name]: value })
     }
 
 
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
-                <input type='text' onChange={this.handleChange} placeholder='Name' />
+                <input type='text' name='name' value={this.state.name} onChange={this.handleChange} placeholder='Name' />
+                <input type='text' name='maCode' value={this.state.maCode} onChange={this.handleChange} placeholder='MA Code' />
+                <input type='text' name='moCode' value={this.state.moCode} onChange={this.handleChange} placeholder='MO Code' />
                 <input type='submit' value='Create New Design' />    
             </form>
         )
