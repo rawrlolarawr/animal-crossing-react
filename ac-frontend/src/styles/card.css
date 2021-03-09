@@ -1,0 +1,10 @@
+div.card {
+    background-color: #d8ccb6;
+    height: 250px;
+    width: 50%;
+    margin: auto;
+    box-shadow: 10px 10px grey;
+    padding: 10px;
+    border-radius: 10px;
+    align-items: center;
+}

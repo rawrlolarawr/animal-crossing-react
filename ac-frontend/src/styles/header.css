@@ -1,0 +1,19 @@
+.Header {
+    background: #54d4fc;
+    margin: 0;
+    padding: 0;
+    overflow: none; 
+    display: flex;
+    align-items: center;
+}
+
+.Header a {
+    display: block;
+    color: #333;
+    padding: 16px;
+    text-decoration: none;
+}
+
+.Header a:hover {
+    background-color: #8ce2f7;
+}
