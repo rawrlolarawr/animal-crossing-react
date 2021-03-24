@@ -1,15 +1,25 @@
-import React from 'react'
-import { useEffect } from 'react/cjs/react.production.min'
+import React, { useReducer } from 'react'
+import useToggle from 'react-use-toggle'
 import Design from '../components/Design'
 import DesignForm from '../components/DesignForm'
 import { connect } from 'react-redux'
 
 const DesignContainer = props => {
+    const [isSorted, toggleIsSorted] = useToggle()
+
+    const mapDesigns = designs => {
+        let sortedDesigns = designs
+        if(isSorted){
+            sortedDesigns = [...designs].sort((a,b) => (a.name.toLowerCase() > b.name.toLowerCase()) ? 1 : -1)
+        }
+        return sortedDesigns.map(designArg => <Design design={designArg} />)
+    }
+
     return (
         <div className='Designs'>
             <DesignForm />
-            {console.log({props})}
-            {props.designs.map(designArg => <Design design={designArg} />)}
+            <button onClick={toggleIsSorted}>Sort</button>
+            {mapDesigns(props.designs)}
         </div>
     )
 }
